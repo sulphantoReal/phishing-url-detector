@@ -4,11 +4,11 @@ A machine learning classifier that predicts whether a URL is phishing or legitim
 
 ## Why I built this
 
-I'm working through the Google Cybersecurity Professional Certificate, and phishing detection kept coming up as a core analyst skill. At the same time I'm building a math foundation for AI/ML. This project sits right at that intersection so instead of reading about phishing indicators, I wanted to test which ones actually hold up as predictive signals when you build a real classifier and look at real data.
+I'm working through the Google Cybersecurity Professional Certificate, and phishing detection kept coming up as a core analyst skill. At the same time I'm building a math foundation for AI/ML. This project sits right at that intersection — instead of reading about phishing indicators, I wanted to test which ones actually hold up as predictive signals when you build a real classifier and look at real data.
 
 ## How it works
 
-1. **Dataset** — ~800,000 labeled URLs (phishing/legitimate) from a public Kaggle dataset, sampled down to a balanced 4,000 rows (2,000 each) for fast iteration. Author was Hari Krishna smthg.
+1. **Dataset** — ~800,000 labeled URLs (phishing/legitimate) from a public Kaggle dataset, sampled down to a balanced 4,000 rows (2,000 each) for fast iteration.
 2. **Feature engineering** — 9 features extracted from raw URL strings: length, dot count, hyphen count, slash count, digit count, presence of an IP address, presence of an `@` symbol, HTTPS usage, and presence of common phishing bait words (`login`, `verify`, `secure`, etc.).
 3. **Modeling** — trained and compared two classifiers:
    - **Logistic Regression** (baseline) — 69.75% accuracy
@@ -41,11 +41,13 @@ The takeaway: population-level averages (what a feature looks like *on average* 
 
 Python, pandas, scikit-learn (`LogisticRegression`, `RandomForestClassifier`, `StandardScaler`, `train_test_split`).
 
-## How to run it
+## Files
 
-- 1.`features.py` — the 9 feature-extraction functions themselves (`url_length`, `count_dots`, `has_ip_address`, etc.). Not run directly — imported by `build_features.py`.
-- 2. `build_features.py` — loads the URL dataset, applies all 9 feature-extraction functions, saves `features_final.csv`
-- 3. `train_model.py` — trains both models, prints accuracy and confusion matrices, prints feature importances
+- `features.py` — the 9 feature-extraction functions themselves (`url_length`, `count_dots`, `has_ip_address`, etc.). Not run directly — imported by `build_features.py`.
+- `build_features.py` — loads the raw URL dataset, applies every function from `features.py` to build the feature table, saves `features_final.csv`
+- `train_model.py` — trains both models on `features_final.csv`, prints accuracy, confusion matrices, and feature importances
+
+## How to run it
 
 ```bash
 python build_features.py
