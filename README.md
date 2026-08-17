@@ -43,8 +43,9 @@ Python, pandas, scikit-learn (`LogisticRegression`, `RandomForestClassifier`, `S
 
 ## How to run it
 
-1. `build_features.py` — loads the URL dataset, applies all 9 feature-extraction functions, saves `features_final.csv`
-2. `train_model.py` — trains both models, prints accuracy and confusion matrices, prints feature importances
+1.`features.py` — the 9 feature-extraction functions themselves (`url_length`, `count_dots`, `has_ip_address`, etc.). Not run directly — imported by `build_features.py`.
+2. `build_features.py` — loads the URL dataset, applies all 9 feature-extraction functions, saves `features_final.csv`
+3. `train_model.py` — trains both models, prints accuracy and confusion matrices, prints feature importances
 
 ```bash
 python build_features.py
